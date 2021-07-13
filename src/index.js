@@ -4,16 +4,39 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+class Button extends React.Component {
+  // This class should contain it's id (What the button is)
+
+  render() {
+    return (
+      <div>
+        <button className = "button">Number</button>
+      </div>
+    );
+  } 
+}
+
+class Calculator extends React.Component {
+  renderCalc(i) {
+    return (
+      <Button />
+    );
+  }
+
+  render() {
+    return (
+      <div className = "calcRow">
+        {this.renderCalc(7)}
+        {this.renderCalc(8)}
+        {this.renderCalc(9)}
+        {this.renderCalc('X')}
+      </div>
+    )
+  }
+
+}
+
+ReactDOM.render (
+  <Calculator />,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-
-//For commit
