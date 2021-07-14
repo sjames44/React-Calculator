@@ -7,8 +7,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.board-row:after {
+.calcRow:after {
   clear: both;
   content: "";
-  display: table;
+  display: inline-block;
+}
+
+.button {
+  width: 60px;
+  height: 45px;
+  background-color: darkgray;
+  border-color: gray;
 }
