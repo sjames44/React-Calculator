@@ -19,3 +19,8 @@ body {
   background-color: darkgray;
   border-color: gray;
 }
+
+.display {
+  text-align: end;
+  width: 230px;
+}

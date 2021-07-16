@@ -18,37 +18,68 @@ import reportWebVitals from './reportWebVitals';
 
 function Button(props) {
   return (
-    <button className = "button">{props.value}</button>
+    <button className = "button"
+    onClick = {props.onClick}>
+      {props.value}</button>
   );
 }
 
 class Display extends React.Component {
-  renderNumber(num) {
-    //Display number
+  constructor(props) {
+    super(props);
+    this.state = {
+      character: "",
+    };
   }
 
   render() {
     //One big gray rectangle ig
     return (
       <div className = "display">
-        Number
+        {this.props.value}
       </div>
     );
   }
 }
 
 class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+     b: [], 
+    };
+  }
+
   renderButton(i) {
     return (
-      <Button value = {i}/>
+      <Button value = {i} onClick = {() => this.clickButton(i)} />
     );
+  }
+
+  renderDisplay() {
+    const size = this.state.b.length;
+    return (
+      <Display value = { this.state.b[size-1] } />
+    )
+  }
+
+  clickButton(i) {
+    const buttons = this.state.b.slice();
+    if (i != '=') {
+      buttons.push(i);
+    } else {
+      //TODO: FIRST CALCULATE BASED ON ARRAY
+      buttons.length = 0;
+      alert("Calculating...");
+    }
+    this.setState({b: buttons});
+    console.log(i);
   }
 
   render() {
     return (
       <div>
-        <div className = "display">Number</div>
-
+        {this.renderDisplay()}
       <div className = "calcRow">
         {this.renderButton('AC')}
         {this.renderButton('+/-')}
